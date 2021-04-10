@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+$primary: #004da3;
+$secondary: #ec2518;
+$success: lighten($primary, 28%);
+$danger: darken($secondary, 10%);
+$warning: #ffc107;
+$info: #849A99;
+
+@import "~bootstrap/scss/bootstrap.scss";
+
+.container-with-menu {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.logo{
+  height: 2rem;
+  padding: 0;
+}
+
+.start-page {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.top-menu-about {
+  position: absolute;
+  right: 1rem;
+}
+
+.region{
+  :hover{
+    color: $success;
+    font-weight: 600;
+  }
+}
