@@ -1,9 +1,5 @@
-$primary: #004da3;
-$secondary: #ec2518;
-$success: lighten($primary, 28%);
-$danger: darken($secondary, 10%);
-$warning: #ffc107;
 $info: #849A99;
+$table-cell-vertical-align: middle;
 
 @import "~bootstrap/scss/bootstrap.scss";
 
@@ -29,7 +25,12 @@ $info: #849A99;
 
 .region{
   :hover{
-    color: $success;
-    font-weight: 600;
-  }
+    text-decoration: underline;
+    text-decoration-color: red;
+    cursor: pointer
+    }
+}
+
+.img-flag{
+  height: 2rem;
 }

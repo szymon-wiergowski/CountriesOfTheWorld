@@ -1,8 +1,25 @@
-<div class="d-flex start-page bg-info justify-content-center py-2">
-  <div class="row justify-content-center">
-    <div class="col-9 d-flex flex-wrap justify-content-center">
-      <div *ngFor="let country of countries">
-        <p>{{country.name}}</p>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-6">
+      <div class="table-responsive">
+        <table class="table table-hover table-bordered table-sm table-light my-2">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Flag</th>
+              <th scope="col">Country name</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let country of countries; index as i">
+            <tr (click)="DisplayCountryDetails(country.name)">
+              <td>{{ i }}</td>
+              <td class="d-flex justify-content-center" >
+                <img src="{{ country.flag }}" class="img-flag" alt="flag" />
+              </td>
+              <td>{{ country.name }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

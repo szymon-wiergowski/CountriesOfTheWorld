@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { debounceTime } from 'rxjs/operators';
-
 import { Country } from 'src/app/models/country';
 import { Region } from 'src/app/models/region';
 import { HttpService } from '../../services/http.service';
@@ -24,13 +22,5 @@ export class StartComponent implements OnInit {
     { name: 'Oceania', searchName: 'oceania' },
   ];
 
-  ngOnInit() {
-    this.http
-      .getCountry('poland')
-      .pipe(debounceTime(300))
-      .subscribe(
-        (res) => ((this.country = res)),
-        (error) => (this.error = error)
-      );
-  }
+  ngOnInit() {}
 }

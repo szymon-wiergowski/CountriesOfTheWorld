@@ -11,7 +11,6 @@ import { StartComponent } from './pages/start/start.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { RegionComponent } from './pages/region/region.component';
 import { CountryComponent } from './pages/country/country.component';
-import { CountryDetailsComponent } from './pages/country/country-details/country-details.component';
 import { AboutComponent } from './pages/about/about.component';
 import { CountriesComponent } from './pages/countries/countries.component';
 
@@ -24,7 +23,6 @@ import { CountriesComponent } from './pages/countries/countries.component';
     PageNotFoundComponent,
     RegionComponent,
     CountryComponent,
-    CountryDetailsComponent,
     AboutComponent,
     CountriesComponent,
   ],

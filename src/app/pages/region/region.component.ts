@@ -18,9 +18,9 @@ export class RegionComponent implements OnInit {
     this.regionName = this.region?.name;
   }
 
-  public navigateToCountries() {
+  public NavigateToCountries() {
     this.router.navigate(['/countries'], {
-      state: { region: this.regionName },
+      state: { region: this.region?.searchName },
     });
   }
 }
