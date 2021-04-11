@@ -1,12 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { Country } from 'src/app/models/country';
-import { RouteParams } from 'src/app/models/routeParams';
-import { HttpService } from 'src/app/services/http.service';
+import { Currencies } from 'src/app/models/currencies';
 
 @Component({
   selector: 'app-country',
@@ -14,29 +9,24 @@ import { HttpService } from 'src/app/services/http.service';
   styleUrls: ['./country.component.scss'],
 })
 export class CountryComponent implements OnInit {
-  constructor(
-    public activatedRoute: ActivatedRoute, private http: HttpService
-  ) {}
+  constructor() {}
 
-  public state$!: Observable<RouteParams>;
-  public country!: Country;
-  public error!: string;
+  @Input() country?: Country;
+  public region?: string;
+  public capital?: string;
+  public population?: number;
+  public currencies?: Currencies[];
+
+  @Output() close: EventEmitter<null> = new EventEmitter();
 
   ngOnInit() {
-    this.state$ = this.activatedRoute.paramMap.pipe(
-      map(() => window.history.state)
-    );
-    let country = '';
-    this.state$?.subscribe((res) => (country = res.country));
-    this.GetCountry(country);
+    this.region = this.country?.region;
+    this.capital = this.country?.capital;
+    this.population = this.country?.population;
+    this.currencies = this.country?.currencies;
   }
 
-  public GetCountry(country: string ){
-    console.log(country)
-
-    this.http.getCountry(country).subscribe(
-      (res) => ((this.country = res)),
-      (error) => (this.error = error)
-    );
+  BackToList() {
+    this.close.emit(null);
   }
 }

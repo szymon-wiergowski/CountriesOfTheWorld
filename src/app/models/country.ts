@@ -1,5 +1,4 @@
 import { Currencies } from './currencies';
-import { Languages } from './languages';
 
 export interface Country {
   name: string;
@@ -8,6 +7,5 @@ export interface Country {
   capital: string;
   flag: string;
   population: number;
-  languages: Languages[];
   currencies: Currencies[];
 }

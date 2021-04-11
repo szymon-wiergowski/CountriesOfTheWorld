@@ -1,26 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { Country } from 'src/app/models/country';
 import { Region } from 'src/app/models/region';
-import { HttpService } from '../../services/http.service';
 
 @Component({
   selector: 'app-start',
   templateUrl: './start.component.html',
   styleUrls: ['./start.component.scss'],
 })
-export class StartComponent implements OnInit {
-  constructor(private http: HttpService) {}
+export class StartComponent {
+  constructor() {}
 
-  country?: Country;
   error?: string;
   regions: Region[] = [
-    { name: 'Africa', searchName: 'africa' },
     { name: 'Americas', searchName: 'americas' },
-    { name: 'Asia', searchName: 'asia' },
     { name: 'Europe', searchName: 'europe' },
+    { name: 'Asia', searchName: 'asia' },
+    { name: 'Africa', searchName: 'africa' },
     { name: 'Oceania', searchName: 'oceania' },
   ];
-
-  ngOnInit() {}
 }

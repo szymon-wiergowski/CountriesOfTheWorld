@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Country } from 'src/app/models/country';
+import { ErrorMsg } from 'src/app/models/errorMsg';
 import { RouteParams } from 'src/app/models/routeParams';
 import { HttpService } from 'src/app/services/http.service';
 
@@ -14,35 +15,50 @@ import { HttpService } from 'src/app/services/http.service';
   styleUrls: ['./countries.component.scss'],
 })
 export class CountriesComponent implements OnInit {
-  constructor(public router: Router,
+  constructor(
+    public router: Router,
     public activatedRoute: ActivatedRoute,
     private http: HttpService
   ) {}
 
-  public state$?: Observable<RouteParams>;
-  public region!: string;
-  public countries?: Country[];
-  public error?: string;
+  public routerState$?: Observable<RouteParams>;
+  public loading: boolean = true;
+  public region = '';
+  public countries: Country[] = [];
+  public country?: Country;
+  public displayCoutry: boolean = false;
+  public error?: ErrorMsg;
 
   ngOnInit() {
-    this.state$ = this.activatedRoute.paramMap.pipe(
+    this.routerState$ = this.activatedRoute.paramMap.pipe(
       map(() => window.history.state)
     );
-    this.state$?.subscribe((res) => (this.region = res.region));
+    this.routerState$?.subscribe((res) => (this.region = res.region));
     this.GetCountries(this.region);
   }
 
   public GetCountries(region: string) {
     this.http.getCountries(region).subscribe(
-      (res) => (this.countries = res),
+      (res) => {
+        this.countries = res;
+        if (!this.error && this.countries.length > 0) {
+          this.StopDisplayLoading();
+        }
+      },
       (error) => (this.error = error)
     );
   }
 
-  public DisplayCountryDetails(name: string){
-    const country = this.countries?.filter(el => el.name === name);
-    this.router.navigate(['/country'], {
-      state: { country: country },
-    });
+  public StopDisplayLoading(){
+    this.loading = false;
+  }
+
+  public DisplayCountryDetails(country: Country) {
+    this.country = country;
+    this.displayCoutry = true;
+  }
+
+  public CloseCountryDetails() {
+    this.displayCoutry = false;
   }
 }

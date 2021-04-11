@@ -1,36 +1,72 @@
-$info: #849A99;
 $table-cell-vertical-align: middle;
+$base-min-heigth: 88vh;
 
 @import "~bootstrap/scss/bootstrap.scss";
+
+html,
+body {
+  height: 100vh;
+}
 
 .container-with-menu {
   padding-left: 0;
   padding-right: 0;
+  background: url("assets/world-map.png") repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
-.logo{
+.navbar-brand {
+  margin-right: 0;
+}
+
+.logo {
   height: 2rem;
   padding: 0;
 }
 
 .start-page {
+  min-height: $base-min-heigth;
   padding-left: 2rem;
   padding-right: 2rem;
 }
 
+.about {
+  min-height: $base-min-heigth;
+}
+
+.loading{
+  min-height: 60vh;
+}
+
+.country {
+  min-height: $base-min-heigth;
+}
+
 .top-menu-about {
   position: absolute;
-  right: 1rem;
+  right: 2rem;
 }
 
-.region{
-  :hover{
+.page-not-found{
+  min-height: $base-min-heigth;
+}
+
+.top-menu-back {
+  position: absolute;
+  left: 1rem;
+}
+
+.region {
+  :hover {
     text-decoration: underline;
-    text-decoration-color: red;
-    cursor: pointer
-    }
+    text-decoration-color: white;
+    cursor: pointer;
+  }
 }
 
-.img-flag{
+.img-flag {
   height: 2rem;
 }

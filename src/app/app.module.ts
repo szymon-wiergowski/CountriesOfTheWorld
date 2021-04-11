@@ -13,6 +13,8 @@ import { RegionComponent } from './pages/region/region.component';
 import { CountryComponent } from './pages/country/country.component';
 import { AboutComponent } from './pages/about/about.component';
 import { CountriesComponent } from './pages/countries/countries.component';
+import { LoadingComponent } from './loading/loading.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { CountriesComponent } from './pages/countries/countries.component';
     CountryComponent,
     AboutComponent,
     CountriesComponent,
+    LoadingComponent,
+    ErrorComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
