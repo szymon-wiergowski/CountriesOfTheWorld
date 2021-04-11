@@ -27,6 +27,10 @@
     </div>
   </div>
 </div>
-<app-country *ngIf="displayCoutry" [country]="country" (close)="CloseCountryDetails()"></app-country>
+<app-country
+  *ngIf="displayCoutry"
+  [country]="country"
+  (close)="CloseCountryDetails()"
+></app-country>
 <app-loading *ngIf="loading"></app-loading>
 <app-error *ngIf="error" [error]="error"></app-error>

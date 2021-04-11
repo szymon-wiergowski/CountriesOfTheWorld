@@ -49,7 +49,7 @@ export class CountriesComponent implements OnInit {
     );
   }
 
-  public StopDisplayLoading(){
+  public StopDisplayLoading() {
     this.loading = false;
   }
 
