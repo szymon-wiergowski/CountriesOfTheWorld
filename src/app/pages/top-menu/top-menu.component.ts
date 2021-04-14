@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 
 @Component({
@@ -6,7 +6,7 @@ import { Location } from '@angular/common';
   templateUrl: './top-menu.component.html',
   styleUrls: ['./top-menu.component.scss'],
 })
-export class TopMenuComponent implements OnInit {
+export class TopMenuComponent {
   constructor(public location: Location) {}
 
   public goToBack(): void {
