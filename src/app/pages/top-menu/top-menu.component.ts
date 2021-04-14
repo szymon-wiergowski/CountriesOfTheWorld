@@ -9,9 +9,7 @@ import { Location } from '@angular/common';
 export class TopMenuComponent implements OnInit {
   constructor(public location: Location) {}
 
-  ngOnInit() {}
-
-  goToBack() {
+  public goToBack(): void {
     if (this.location.path() === '/countries') {
       this.location.back();
     }
