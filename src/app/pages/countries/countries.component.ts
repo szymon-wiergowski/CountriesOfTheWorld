@@ -19,25 +19,25 @@ export class CountriesComponent implements OnInit {
     public router: Router,
     public activatedRoute: ActivatedRoute,
     private http: HttpService
-  ) {}
+  ) { }
 
   public routerState$?: Observable<RouteParams>;
-  public loading: boolean = true;
+  public loading = true;
   public region = '';
   public countries: Country[] = [];
   public country?: Country;
-  public displayCoutry: boolean = false;
+  public displayCoutry = false;
   public error?: ErrorMsg;
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.routerState$ = this.activatedRoute.paramMap.pipe(
       map(() => window.history.state)
     );
-    this.routerState$?.subscribe((res) => (this.region = res.region));
+    this.routerState$?.subscribe(res => this.region = res.region);
     this.GetCountries(this.region);
   }
 
-  public GetCountries(region: string) {
+  public GetCountries(region: string): void {
     this.http.getCountries(region).subscribe(
       (res) => {
         this.countries = res;
