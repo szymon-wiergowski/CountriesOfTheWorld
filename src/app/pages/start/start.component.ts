@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import { Observable } from 'rxjs';
+import { hideBackButton, showBackButton } from '../../actions/display.actions';
 
 import { Region } from 'src/app/models/region';
 
@@ -7,8 +11,12 @@ import { Region } from 'src/app/models/region';
   templateUrl: './start.component.html',
   styleUrls: ['./start.component.scss'],
 })
-export class StartComponent {
-  constructor() {}
+export class StartComponent implements OnInit {
+
+  constructor(public store: Store<{ disp: boolean }>) {
+    this.dispplayButton$ = store.select('disp');
+  }
+  dispplayButton$: Observable<boolean>;
 
   error?: string;
   regions: Region[] = [
@@ -18,4 +26,12 @@ export class StartComponent {
     { name: 'Africa', searchName: 'africa' },
     { name: 'Oceania', searchName: 'oceania' },
   ];
+
+  ngOnInit(): void {
+    this.store.dispatch(hideBackButton());
+  }
+
+  ngOnDestroy() {
+    this.store.dispatch(showBackButton());
+  }
 }

@@ -1,17 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-top-menu',
   templateUrl: './top-menu.component.html',
   styleUrls: ['./top-menu.component.scss'],
 })
-export class TopMenuComponent {
-  constructor(public location: Location) {}
+export class TopMenuComponent implements OnInit {
+  constructor(public location: Location, public store: Store<{ disp: boolean }>) {
+    this.dispplayButton$ = store.select('disp');
+  }
+
+  dispplayButton$: Observable<boolean>;
+
+  ngOnInit(): void {}
 
   public goToBack(): void {
-    if (this.location.path() === '/countries') {
       this.location.back();
-    }
   }
 }

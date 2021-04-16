@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Region } from 'src/app/models/region';
-import { HttpService } from 'src/app/services/http.service';
 
 @Component({
   selector: 'app-region',
@@ -10,16 +9,16 @@ import { HttpService } from 'src/app/services/http.service';
   styleUrls: ['./region.component.scss'],
 })
 export class RegionComponent implements OnInit {
-  constructor(public router: Router, private http: HttpService) {}
+  constructor(private router: Router) {}
 
   @Input() region?: Region;
   public regionName?: string;
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.regionName = this.region?.name;
   }
 
-  public NavigateToCountries() {
+  public NavigateToCountries(): void {
     this.router.navigate(['/countries'], {
       state: { region: this.region?.searchName },
     });

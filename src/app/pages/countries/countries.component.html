@@ -29,8 +29,8 @@
 </div>
 <app-country
   *ngIf="displayCoutry"
-  [country]="country"
-  (close)="CloseCountryDetails()"
+  [countryName]="country"
+  (closeModule)="CloseCountryDetails()"
 ></app-country>
 <app-loading *ngIf="loading"></app-loading>
 <app-error *ngIf="error" [error]="error"></app-error>
