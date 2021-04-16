@@ -1,6 +1,8 @@
 # Countries of the world
 
-An application that allows you to search for a country by continent.
+Stack - Angular, JavaScript, TypeScript, RxJs, Router, HTML, SCSS
+
+##
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.6.
 
