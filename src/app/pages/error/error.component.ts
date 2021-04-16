@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { ErrorMsg } from '../models/errorMsg';
+import { ErrorMsg } from '../../models/errorMsg';
 
 @Component({
   selector: 'app-error',

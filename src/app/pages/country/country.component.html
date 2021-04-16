@@ -1,8 +1,8 @@
 <div class="d-flex justify-content-center align-items-center country">
   <div class="card" style="width: 22rem">
-    <img src="{{ country?.flag }}" class="card-img-top" alt="countryflag" />
+    <img src="{{ flag }}" class="card-img-top" alt="countryflag" />
     <div class="card-body">
-      <h4 class="card-title">{{ country?.name | uppercase }}</h4>
+      <h4 class="card-title">{{ name | uppercase }}</h4>
       <p class="fw-bold">
         Region:<span class="card-text fw-normal"> {{ region }}</span>
       </p>
@@ -11,24 +11,18 @@
       </p>
       <p class="fw-bold">
         Population:<span class="card-text fw-normal">
-          {{ population | number }}</span
-        >
+          {{ population | number }}</span>
       </p>
       <p class="fw-bold">
         Currencies:
-        <span *ngFor="let currency of currencies">
-          <span class="card-text fw-normal">{{ currency.name }}</span
-          >&nbsp;
+        <span *ngFor="let currency of currencies; last as isLast">
+          <span class="card-text fw-normal">{{ currency.name }}<span *ngIf="!isLast">, </span>
+          </span>
         </span>
       </p>
     </div>
     <div class="position-absolute bottom-0 end-0 m-2">
-      <button
-        type="button"
-        class="btn-close"
-        (click)="BackToList()"
-        aria-label="Close"
-      ></button>
+      <button type="button" class="btn-close" (click)="BackToList()" aria-label="Close"></button>
     </div>
   </div>
 </div>

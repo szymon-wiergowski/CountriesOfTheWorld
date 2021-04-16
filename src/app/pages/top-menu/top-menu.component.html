@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
   <div class="container-fluid d-flex justify-content-center">
-    <button type="button" class="btn btn-lg btn-light top-menu-back" (click)="goToBack()">Back</button>
+    <button *ngIf="dispplayButton$ | async" type="button" class="btn btn-lg btn-light top-menu-back" (click)="goToBack()">Back</button>
     <a class="navbar-brand text-center mr-0" href="/start">
       <img class="logo" src="assets/logo.bmp" alt="logo" />
     </a>
-    <a class="navbar-brand top-menu-about" href="/about"> About </a>
+    <a class="navbar-brand top-menu-about" href="/about">About</a>
   </div>
 </nav>

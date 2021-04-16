@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 import { Country } from 'src/app/models/country';
 import { ErrorMsg } from 'src/app/models/errorMsg';
 import { RouteParams } from 'src/app/models/routeParams';
+
 import { HttpService } from 'src/app/services/http.service';
 
 @Component({
@@ -17,27 +18,27 @@ import { HttpService } from 'src/app/services/http.service';
 export class CountriesComponent implements OnInit {
   constructor(
     public router: Router,
-    public activatedRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private http: HttpService
-  ) {}
+  ) { }
 
   public routerState$?: Observable<RouteParams>;
-  public loading: boolean = true;
+  public loading = true;
   public region = '';
   public countries: Country[] = [];
   public country?: Country;
-  public displayCoutry: boolean = false;
+  public displayCoutry = false;
   public error?: ErrorMsg;
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.routerState$ = this.activatedRoute.paramMap.pipe(
       map(() => window.history.state)
     );
-    this.routerState$?.subscribe((res) => (this.region = res.region));
+    this.routerState$?.subscribe(res => this.region = res.region);
     this.GetCountries(this.region);
   }
 
-  public GetCountries(region: string) {
+  public GetCountries(region: string): void {
     this.http.getCountries(region).subscribe(
       (res) => {
         this.countries = res;
@@ -49,16 +50,16 @@ export class CountriesComponent implements OnInit {
     );
   }
 
-  public StopDisplayLoading() {
+  public StopDisplayLoading(): void {
     this.loading = false;
   }
 
-  public DisplayCountryDetails(country: Country) {
+  public DisplayCountryDetails(country: Country): void {
     this.country = country;
     this.displayCoutry = true;
   }
 
-  public CloseCountryDetails() {
+  public CloseCountryDetails(): void {
     this.displayCoutry = false;
   }
 }

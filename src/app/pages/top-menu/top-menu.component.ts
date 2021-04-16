@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-top-menu',
@@ -7,13 +9,15 @@ import { Location } from '@angular/common';
   styleUrls: ['./top-menu.component.scss'],
 })
 export class TopMenuComponent implements OnInit {
-  constructor(public location: Location) {}
+  constructor(public location: Location, public store: Store<{ disp: boolean }>) {
+    this.dispplayButton$ = store.select('disp');
+  }
 
-  ngOnInit() {}
+  dispplayButton$: Observable<boolean>;
 
-  goToBack() {
-    if (this.location.path() === '/countries') {
+  ngOnInit(): void {}
+
+  public goToBack(): void {
       this.location.back();
-    }
   }
 }
