@@ -11,9 +11,9 @@ import { Country } from '../models/country';
 export class HttpService {
   constructor(private httpClient: HttpClient) {}
 
-  public BASE_URL = 'https://restcountries.eu/rest/v2';
+  public BASE_URL = 'https://restcountries.eu/rest/v2/region';
 
   getCountries(region: string): Observable<Country[]> {
-    return this.httpClient.get<Country[]>(`${this.BASE_URL}/region/${region}`);
+    return this.httpClient.get<Country[]>(`${this.BASE_URL}/${region}`);
   }
 }
