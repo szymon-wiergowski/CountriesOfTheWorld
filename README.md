@@ -1,6 +1,5 @@
 # Countries of the world
 
-An application that allows you to search for a country by continent.
 Stack - Angular, TypeScript, RxJs, Router, HTML, SCSS
 
 ##
