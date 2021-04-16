@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Country } from 'src/app/models/country';
