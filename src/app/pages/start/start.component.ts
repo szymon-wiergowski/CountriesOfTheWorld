@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
@@ -11,7 +11,7 @@ import { Region } from 'src/app/models/region';
   templateUrl: './start.component.html',
   styleUrls: ['./start.component.scss'],
 })
-export class StartComponent implements OnInit {
+export class StartComponent implements OnInit, OnDestroy {
 
   constructor(public store: Store<{ disp: boolean }>) {
     this.dispplayButton$ = store.select('disp');

@@ -17,7 +17,7 @@ export class TopMenuComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  public goToBack(): void {
+  public GoToBack(): void {
       this.location.back();
   }
 }
