@@ -1,6 +1,6 @@
 # Countries of the world
 
-Stack - Angular, JavaScript, TypeScript, RxJs, Router, HTML, SCSS
+Stack - Angular, JavaScript, TypeScript, RxJs, NgRx, Router, HTML, SCSS
 
 ##
 

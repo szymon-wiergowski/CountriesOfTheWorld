@@ -20,7 +20,7 @@ export class CountriesComponent implements OnInit {
     public router: Router,
     private activatedRoute: ActivatedRoute,
     private http: HttpService
-  ) { }
+  ) {}
 
   public countries$?: Observable<Country[]>;
   public loading = true;
