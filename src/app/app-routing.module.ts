@@ -9,7 +9,7 @@ import { StartComponent } from './pages/start/start.component';
 const routes: Routes = [
   { path: '', redirectTo: '/start', pathMatch: 'full' },
   { path: 'start', component: StartComponent },
-  { path: 'countries', component: CountriesComponent },
+  { path: 'countries/:id', component: CountriesComponent },
   { path: 'country', component: CountryComponent },
   { path: 'about', component: AboutComponent },
   { path: '**', component: PageNotFoundComponent },

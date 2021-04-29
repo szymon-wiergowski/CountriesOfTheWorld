@@ -5,7 +5,7 @@
     'bg-success': regionName == 'Oceania',
     'bg-dark': regionName == 'Americas'
   }" style="width: 10rem; height: 10rem">
-  <div class="card-body d-flex justify-content-center align-items-center" (click)="NavigateToCountries()">
-    <h5 class="card-title text-white">{{ regionName }}</h5>
+  <div class="card-body d-flex justify-content-center align-items-center">
+    <a class="h5 card-title text-white" [routerLink]="['/countries', regionSearchName]">{{ regionName }}</a>
   </div>
 </div>

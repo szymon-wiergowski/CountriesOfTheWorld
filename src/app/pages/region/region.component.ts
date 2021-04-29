@@ -9,18 +9,15 @@ import { Region } from 'src/app/models/region';
   styleUrls: ['./region.component.scss'],
 })
 export class RegionComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   @Input() region?: Region;
   public regionName?: string;
+  public defaultRegion = 'europe';
+  public regionSearchName?: string;
 
   ngOnInit(): void {
     this.regionName = this.region?.name;
-  }
-
-  public NavigateToCountries(): void {
-    this.router.navigate(['/countries'], {
-      state: { region: this.region?.searchName },
-    });
+    this.regionSearchName = this.region?.searchName || this.defaultRegion;
   }
 }
