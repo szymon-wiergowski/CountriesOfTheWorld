@@ -30,6 +30,7 @@ export class CountriesComponent implements OnInit {
   public displayCoutry = false;
   public error?: ErrorMsg;
 
+
   ngOnInit(): void {
     this.countries$ = this.activatedRoute.paramMap.pipe(
       switchMap((params: ParamMap) =>
