@@ -21,9 +21,9 @@ export class CountriesComponent implements OnInit {
     public router: Router,
     private activatedRoute: ActivatedRoute,
     private http: HttpService
-  ) {}
+  ) { }
 
-  public region$?: Observable<string>;
+  public region = '';
   public countries$?: Observable<Country[]>;
   public country?: Country;
   public loading = false;
@@ -31,12 +31,18 @@ export class CountriesComponent implements OnInit {
   public error?: ErrorMsg;
 
 
-  ngOnInit(): void {
-    this.countries$ = this.activatedRoute.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-        this.http.getCountries(params.get('id') || 'europe')
-      )
-    );
+  ngOnInit() {
+    this.GetRegion();
+    this.GetCountries();
+  }
+
+  public GetCountries(): void {
+    this.countries$ = this.http.getCountries(this.region);
+  }
+
+  private GetRegion(): void {
+    const defaultRegion = "Europe";
+    this.region = this.activatedRoute.snapshot.paramMap.get('id') || defaultRegion;
   }
 
   public StopDisplayLoading(): void {
