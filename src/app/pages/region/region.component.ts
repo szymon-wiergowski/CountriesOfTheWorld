@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { Region } from 'src/app/models/region';
 
@@ -9,15 +8,11 @@ import { Region } from 'src/app/models/region';
   styleUrls: ['./region.component.scss'],
 })
 export class RegionComponent implements OnInit {
-  constructor(private router: Router) { }
 
   @Input() region?: Region;
-  public regionName?: string;
-  public defaultRegion = 'europe';
-  public regionSearchName?: string;
+  public regionName ? = '';
 
   ngOnInit(): void {
     this.regionName = this.region?.name;
-    this.regionSearchName = this.region?.searchName || this.defaultRegion;
-  }
+   }
 }

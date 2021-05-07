@@ -1,4 +1,5 @@
-$base-min-heigth: 88vh;
+$base-min-heigth: 87vh;
+$base-app-color: #044957;
 
 @import "~bootstrap/scss/bootstrap.scss";
 
@@ -17,6 +18,32 @@ body {
   background-size: cover;
 }
 
+.default--page {
+  min-height: $base-min-heigth;
+}
+
+.about {
+  @extend .default--page;
+}
+
+.page-not-found {
+  @extend .default--page;
+}
+
+.loading {
+  @extend .default--page;
+}
+
+.country {
+  @extend .default--page;
+}
+
+.start-page {
+  @extend .default--page;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
 .navbar-brand {
   margin-right: 0;
 }
@@ -26,42 +53,23 @@ body {
   padding: 0;
 }
 
-.start-page {
-  min-height: $base-min-heigth;
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
-.about {
-  min-height: $base-min-heigth;
-}
-
-.loading{
-  min-height: 60vh;
-}
-
-.country {
-  min-height: $base-min-heigth;
-}
-
 .top-menu-about {
   position: absolute;
   right: 2rem;
-}
-
-.page-not-found{
-  min-height: $base-min-heigth;
 }
 
 .top-menu-back {
   position: absolute;
   left: 1rem;
 }
+a {
+  text-decoration: none;
+}
 
-.region {
-  :hover {
-    text-decoration: underline;
-    text-decoration-color: white;
+#region {
+  :hover:not(a) {
+    -webkit-box-shadow: 5px 5px 15px 5px $base-app-color;
+    box-shadow: 5px 5px 15px 5px $base-app-color;
     cursor: pointer;
   }
 }

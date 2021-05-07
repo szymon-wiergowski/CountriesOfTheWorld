@@ -20,18 +20,18 @@ export class StartComponent implements OnInit, OnDestroy {
 
   error?: string;
   regions: Region[] = [
-    { name: 'Americas', searchName: 'americas' },
-    { name: 'Europe', searchName: 'europe' },
-    { name: 'Asia', searchName: 'asia' },
-    { name: 'Africa', searchName: 'africa' },
-    { name: 'Oceania', searchName: 'oceania' },
+    { name: 'Americas' },
+    { name: 'Europe' },
+    { name: 'Asia' },
+    { name: 'Africa' },
+    { name: 'Oceania' },
   ];
 
   ngOnInit(): void {
     this.store.dispatch(hideBackButton());
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.store.dispatch(showBackButton());
   }
 }

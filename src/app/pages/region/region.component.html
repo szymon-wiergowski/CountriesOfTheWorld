@@ -1,4 +1,4 @@
-<div class="card border border-2 rounded m-3 region" [ngClass]="{
+<div id="region" class="card border border-3 rounded m-3 " [ngClass]="{
     'bg-primary': regionName == 'Africa',
     'bg-warning': regionName == 'Europe',
     'bg-danger': regionName == 'Asia',
@@ -6,6 +6,6 @@
     'bg-dark': regionName == 'Americas'
   }" style="width: 10rem; height: 10rem">
   <div class="card-body d-flex justify-content-center align-items-center">
-    <a class="h5 card-title text-white" [routerLink]="['/countries', regionSearchName]">{{ regionName }}</a>
+    <a class="h5 card-title text-white" [routerLink]="['/countries', regionName]">{{ regionName }}</a>
   </div>
 </div>
