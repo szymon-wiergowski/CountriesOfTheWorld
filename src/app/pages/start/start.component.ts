@@ -17,8 +17,6 @@ export class StartComponent implements OnInit, OnDestroy {
     this.dispplayButton$ = store.select('disp');
   }
   dispplayButton$: Observable<boolean>;
-
-  error?: string;
   regions: Region[] = [
     { name: 'Americas' },
     { name: 'Europe' },

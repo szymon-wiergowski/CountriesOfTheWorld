@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
-import { Observable, pipe } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 import { Country } from 'src/app/models/country';
 import { ErrorMsg } from 'src/app/models/errorMsg';
 import { Region } from 'src/app/models/region';
-import { RouteParams } from 'src/app/models/routeParams';
 
 import { HttpService } from 'src/app/services/http.service';
 
@@ -23,7 +21,8 @@ export class CountriesComponent implements OnInit {
     private http: HttpService
   ) { }
 
-  public region = '';
+  public region: Partial<Region> = {};
+  private defaultRegion = 'Europe';
   public countries$?: Observable<Country[]>;
   public country?: Country;
   public loading = false;
@@ -31,18 +30,17 @@ export class CountriesComponent implements OnInit {
   public error?: ErrorMsg;
 
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.GetRegion();
     this.GetCountries();
   }
 
-  public GetCountries(): void {
-    this.countries$ = this.http.getCountries(this.region);
+  private GetRegion(): void {
+    this.region.name = this.activatedRoute.snapshot.paramMap.get('id') || this.defaultRegion;
   }
 
-  private GetRegion(): void {
-    const defaultRegion = "Europe";
-    this.region = this.activatedRoute.snapshot.paramMap.get('id') || defaultRegion;
+  public GetCountries(): void {
+    this.countries$ = this.http.getCountries(this.region.name || this.defaultRegion);
   }
 
   public StopDisplayLoading(): void {
