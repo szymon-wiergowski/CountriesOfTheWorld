@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { hideBackButton, showBackButton } from 'src/app/actions/display.actions';
 
@@ -10,9 +10,10 @@ import { Currencies } from 'src/app/models/currencies';
   templateUrl: './country.component.html',
   styleUrls: ['./country.component.scss'],
 })
-export class CountryComponent implements OnInit {
+export class CountryComponent implements OnInit, OnDestroy {
   constructor(public store: Store<{ disp: boolean }>) { }
 
+  // tslint:disable-next-line: no-input-rename
   @Input('countryName') country?: Country;
   public name?: string;
   public flag?: string;
@@ -37,7 +38,7 @@ export class CountryComponent implements OnInit {
     this.closeModule.emit(null);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.store.dispatch(showBackButton());
   }
 }
