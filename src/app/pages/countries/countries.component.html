@@ -1,39 +1,43 @@
-<div *ngIf="!loading && !displayCoutry" class="container">
-  <div class="row d-flex justify-content-center">
-    <div class="col-md-6">
-      <div class="table-responsive">
-        <h4 *ngIf="region" class="text-center mt-2">{{ region.name | uppercase }}</h4>
-        <table class="table table-hover table-bordered table-sm table-secondary my-2">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Flag</th>
-              <th scope="col">Country name</th>
-            </tr>
-          </thead>
-          <tbody *ngFor="let country of countries$ | async; index as i">
-            <tr (click)="DisplayCountryDetails(country)">
-              <td>{{ i + 1 }}</td>
-              <td class="d-flex justify-content-center">
-                <img src="{{ country.flag }}" class="img-flag" alt="flag" />
-              </td>
-              <td>{{ country.name }}</td>
-            </tr>
-          </tbody>
-        </table>
+<div *ngIf="!displayCoutry; else countryDetails">
+  <div *ngIf="countries$ | async; else loadingOrError" class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-6">
+        <div class="table-responsive">
+          <h4 *ngIf="region" class="text-center mt-2">{{ region.name | uppercase }}</h4>
+          <table class="table table-hover table-bordered table-sm table-secondary my-2">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Flag</th>
+                <th scope="col">Country name</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let country of countries$ | async; index as i">
+              <tr (click)="DisplayCountryDetails(country)">
+                <td>{{ i + 1 }}</td>
+                <td class="d-flex justify-content-center">
+                  <img src="{{ country.flag }}" class="img-flag" alt="flag" />
+                </td>
+                <td>{{ country.name }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<app-country *ngIf="displayCoutry" [countryName]="country" (closeModule)="CloseCountryDetails()"></app-country>
+<ng-template #countryDetails>
+  <app-country [countryName]="country" (closeModule)="CloseCountryDetails()"></app-country>
+</ng-template>
 
-<!-- <ng-template #loadingOrError>
-  <ng-container *ngIf="error; else loading">
-    <app-error #error [error]="error"></app-error>
+<ng-template #loadingOrError>
+  <ng-container *ngIf="errorMsg; else loading">
+    <app-error [error]="errorMsg"></app-error>
   </ng-container>
 
   <ng-template #loading>
     <app-loading *ngIf="loading"></app-loading>
   </ng-template>
-</ng-template> -->
+</ng-template>

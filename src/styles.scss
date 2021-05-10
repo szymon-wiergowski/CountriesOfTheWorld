@@ -38,6 +38,10 @@ body {
   @extend .default--page;
 }
 
+.error {
+  min-height: 67vh;
+}
+
 .start-page {
   @extend .default--page;
   padding-left: 2rem;
@@ -70,7 +74,6 @@ a {
   :hover:not(a) {
     -webkit-box-shadow: 5px 5px 15px 5px $base-app-color;
     box-shadow: 5px 5px 15px 5px $base-app-color;
-    cursor: pointer;
   }
 }
 

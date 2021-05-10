@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError, delay } from 'rxjs/operators';
 
 import { Country } from 'src/app/models/country';
 import { ErrorMsg } from 'src/app/models/errorMsg';
@@ -25,9 +26,9 @@ export class CountriesComponent implements OnInit {
   private defaultRegion = 'Europe';
   public countries$?: Observable<Country[]>;
   public country?: Country;
-  public loading = false;
+  public loading = true;
   public displayCoutry = false;
-  public error?: ErrorMsg;
+  public errorMsg?: ErrorMsg;
 
 
   ngOnInit(): void {
@@ -40,11 +41,13 @@ export class CountriesComponent implements OnInit {
   }
 
   public GetCountries(): void {
-    this.countries$ = this.http.getCountries(this.region.name || this.defaultRegion);
-  }
-
-  public StopDisplayLoading(): void {
-    this.loading = false;
+    this.countries$ = this.http.getCountries(this.region.name as string).pipe(
+      delay(400),
+      catchError(err => {
+        this.errorMsg = err;
+        return throwError(err);
+      })
+    );
   }
 
   public DisplayCountryDetails(country: Country): void {

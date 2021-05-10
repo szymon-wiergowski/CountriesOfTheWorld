@@ -10,9 +10,9 @@ import { Region } from 'src/app/models/region';
 export class RegionComponent implements OnInit {
 
   @Input() region?: Region;
-  public regionName ? = '';
+  public regionName ?= '';
 
   ngOnInit(): void {
     this.regionName = this.region?.name;
-   }
+  }
 }
